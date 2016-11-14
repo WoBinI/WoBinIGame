@@ -1,3 +1,4 @@
+import {MainMapComponent} from './MainMap/mainMap.component';
 import {NgModule} from '@angular/core'
 import {RouterModule} from "@angular/router";
 import {rootRouterConfig} from "./app.routes";
@@ -14,7 +15,8 @@ import {RepoDetailComponent} from './github/repo-detail/repo-detail.component';
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 
 @NgModule({
-  declarations: [AppComponent, AboutComponent, RepoBrowserComponent, RepoListComponent, RepoDetailComponent, HomeComponent],
+  declarations: [AppComponent, AboutComponent, RepoBrowserComponent, RepoListComponent, RepoDetailComponent, 
+  HomeComponent, MainMapComponent],
   imports     : [BrowserModule, FormsModule, HttpModule, RouterModule.forRoot(rootRouterConfig)],
   providers   : [GithubService, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap   : [AppComponent]

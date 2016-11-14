@@ -10,6 +10,7 @@ import { GithubService } from '../shared/github.service';
 export class RepoBrowserComponent {
 
   constructor(private router: Router, private github: GithubService) {
+   
   }
 
   searchForOrg(orgName: string) {
