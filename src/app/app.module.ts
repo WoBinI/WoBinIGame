@@ -13,11 +13,15 @@ import {RepoBrowserComponent} from './github/repo-browser/repo-browser.component
 import {RepoListComponent} from './github/repo-list/repo-list.component';
 import {RepoDetailComponent} from './github/repo-detail/repo-detail.component';
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';
+import { AgmCoreModule } from 'angular2-google-maps/core';
 
 @NgModule({
   declarations: [AppComponent, AboutComponent, RepoBrowserComponent, RepoListComponent, RepoDetailComponent, 
   HomeComponent, MainMapComponent],
-  imports     : [BrowserModule, FormsModule, HttpModule, RouterModule.forRoot(rootRouterConfig)],
+  imports     : [BrowserModule, FormsModule, HttpModule,
+   RouterModule.forRoot(rootRouterConfig), AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyClomCuWY6L5pul5w6xnHrIUbOGBzRbnEU'
+    })],
   providers   : [GithubService, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap   : [AppComponent]
 })
