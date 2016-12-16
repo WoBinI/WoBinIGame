@@ -6,4 +6,20 @@ import {Component} from '@angular/core';
   templateUrl: './about.component.html'
 })
 export class AboutComponent {
+
+  constructor() {
+    this.name = "MAthiasss";
+    this.points = 20;
+  }
+  
+  name : string;
+
+  points : number;
+
+  public add()  : void {
+    this.points = this.points + 1;
+  }
+
 }
+
+

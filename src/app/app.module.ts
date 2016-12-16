@@ -1,3 +1,4 @@
+import {MapComponent} from './MainMap/Map/Map.component';
 import {MainMapComponent} from './MainMap/mainMap.component';
 import {NgModule} from '@angular/core'
 import {RouterModule} from "@angular/router";
@@ -17,7 +18,7 @@ import { AgmCoreModule } from 'angular2-google-maps/core';
 
 @NgModule({
   declarations: [AppComponent, AboutComponent, RepoBrowserComponent, RepoListComponent, RepoDetailComponent, 
-  HomeComponent, MainMapComponent],
+                  HomeComponent, MainMapComponent, MapComponent],
   imports     : [BrowserModule, FormsModule, HttpModule,
    RouterModule.forRoot(rootRouterConfig), AgmCoreModule.forRoot({
       apiKey: 'AIzaSyClomCuWY6L5pul5w6xnHrIUbOGBzRbnEU'

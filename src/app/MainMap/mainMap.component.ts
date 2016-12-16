@@ -1,3 +1,4 @@
+import {MapTypeStyle} from 'angular2-google-maps/core/services/google-maps-types';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['mainMap.component.css']
 })
 export class MainMapComponent implements OnInit {
-    constructor() { }
+   
+    ngOnInit() {   
+      
 
-    ngOnInit() { }
+    }
 }
