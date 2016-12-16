@@ -11,12 +11,12 @@ declare var google: any;
 @Component({
 	// providers: 
 	outputs: ['create'],
-	selector: 'devmap',
-	templateUrl: 'Map.component.html',
-	styleUrls: ["Map.component.less"]
+	selector: 'street-view',
+	templateUrl: 'StreetView.component.html',
+	styleUrls: ["StreetView.component.less"]
 })
 
-export class MapComponent implements OnInit, AfterContentInit {
+export class StreetViewComponent implements OnInit, AfterContentInit {
 
 	private _map: Promise<mapTypes.GoogleMap>;
 	private _mapResolver: (value?: mapTypes.GoogleMap) => void;
