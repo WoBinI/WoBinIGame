@@ -10,14 +10,15 @@ import { BrowserModule } from "@angular/platform-browser";
 import { HttpModule } from "@angular/http";
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { AgmCoreModule } from 'angular2-google-maps/core';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { MaterialModule } from '@angular/material';
+import 'hammerjs';
 
 @NgModule({
   declarations: [AppComponent, StreetViewComponent, HomeComponent],
   imports: [BrowserModule, FormsModule, HttpModule,
     RouterModule.forRoot(rootRouterConfig), AgmCoreModule.forRoot({
       apiKey: 'AIzaSyClomCuWY6L5pul5w6xnHrIUbOGBzRbnEU'
-    }), NgbModule.forRoot()
+    }), MaterialModule.forRoot()
   ],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]

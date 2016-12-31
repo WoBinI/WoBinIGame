@@ -8,3 +8,4 @@ export const rootRouterConfig: Routes = [
   {path: 'map', component: StreetViewComponent}
 ];
 
+ 

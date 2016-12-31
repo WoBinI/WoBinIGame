@@ -1,13 +1,13 @@
 var webpack = require('webpack');
 var path = require('path');
-
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 // Webpack Config
 var webpackConfig = {
   entry: {
     'polyfills': './src/polyfills.browser.ts',
     'vendor':    './src/vendor.browser.ts',
-    'main':       './src/main.browser.ts',
+    'main':       './src/main.browser.ts'
   },
 
   output: {
@@ -17,6 +17,10 @@ var webpackConfig = {
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(true),
     new webpack.optimize.CommonsChunkPlugin({ name: ['main', 'vendor', 'polyfills'], minChunks: Infinity }),
+      new HtmlWebpackPlugin({
+        template: './src/index.html'
+      }), // Generates default index.html 
+
   ],
 
   module: {
@@ -24,7 +28,7 @@ var webpackConfig = {
       // .ts files for TypeScript
       { test: /\.ts$/, loaders: ['awesome-typescript-loader', 'angular2-template-loader'] },
       { test: /\.less$/, loaders: ['to-string-loader', 'css-loader', 'less-loader'] },
-      { test: /\.css$/, loaders: ['to-string-loader', 'css-loader'] },
+      { test: /\.css$/, loaders: ['style-loader', 'css-loader'] },
       { test: /\.html$/, loader: 'raw-loader' }
     ]
   }
@@ -50,7 +54,8 @@ var defaultConfig = {
 
   devServer: {
     historyApiFallback: true,
-    watchOptions: { aggregateTimeout: 300, poll: 1000 }
+    watchOptions: { aggregateTimeout: 300, poll: 1000 },
+    
   },
 
   node: {
