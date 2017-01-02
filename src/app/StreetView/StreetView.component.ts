@@ -1,3 +1,4 @@
+
 import { MapsAPILoader } from 'angular2-google-maps/core/services/maps-api-loader/maps-api-loader';
 import * as mapTypes from 'angular2-google-maps/core/services/google-maps-types';
 import { AfterContentInit } from '@angular/core/src/metadata/lifecycle_hooks';
@@ -16,26 +17,19 @@ declare var google: any;
 	styleUrls: ["StreetView.component.less"]
 })
 
-export class StreetViewComponent implements OnInit, AfterContentInit {
+export class StreetViewComponent implements OnInit {
 
+    private static MAP_SELECTOR: string = '.main-map';
 	private _map: Promise<mapTypes.GoogleMap>;
 	private _mapResolver: (value?: mapTypes.GoogleMap) => void;
-
+	
 	constructor(private myElement: ElementRef, private _loader: MapsAPILoader) {
 		this._map =
 			new Promise<mapTypes.GoogleMap>((resolve: () => void) => { this._mapResolver = resolve; });
 	}
 
-	public ngAfterContentInit(): void {
-
-	}
-
-	public create(): void {
-
-	}
-
-	public ngOnInit(): void {
-		var container = this.myElement.nativeElement.querySelector('.map');
+	public ngOnInit(): void { 
+		var container = this.myElement.nativeElement.querySelector(StreetViewComponent.MAP_SELECTOR);
 		this._loader.load().then(() => {
 			var fenway = { lat: 42.345573, lng: -71.098326 };
 			var map = new google.maps.StreetViewPanorama(container, <mapTypes.MapOptions>{

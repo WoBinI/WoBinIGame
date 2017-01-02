@@ -1,2 +1,27 @@
-	
+<md-sidenav-layout>
+
+  <md-sidenav #sidenav mode="side" class="app-sidenav">
+    Sidenav
+  </md-sidenav>
+
+  <md-toolbar color="primary">
+    <button class="app-icon-button" (click)="sidenav.toggle()">
+      <i class="material-icons app-toolbar-menu">menu</i>
+    </button>
+
+    StreetView Game
+
+    <span class="app-toolbar-filler"></span>
+    <md-chip-list>
+      <md-chip color="accent" selected="true">WCIS 2016/17</md-chip>
+      </md-chip-list>
+  </md-toolbar>
+
+  <div class="app-content ">
   <router-outlet></router-outlet>
+    
+   
+  </div>
+
+</md-sidenav-layout>
+

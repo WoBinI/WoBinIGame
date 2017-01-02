@@ -1,9 +1,11 @@
-import {Component} from '@angular/core';
+import {Component, ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector   : 'app',
   templateUrl: './app.component.html',
-  styles:  []
+  styleUrls:  ['./app.component.less'],
+  encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {
-}
+} 
+  
