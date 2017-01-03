@@ -1,3 +1,4 @@
+import { StreetViewService } from './StreetView/shared/streetView.service';
 import { HomeComponent } from "./home/home.component";
 import { StreetViewComponent } from './StreetView/StreetView.component';
 
@@ -20,7 +21,7 @@ import 'hammerjs';
       apiKey: 'AIzaSyClomCuWY6L5pul5w6xnHrIUbOGBzRbnEU'
     }), MaterialModule.forRoot()
   ],
-  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
+  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }, StreetViewService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
