@@ -1,4 +1,11 @@
 <md-card>
-  <md-card-subtitle>Wo ist das?</md-card-subtitle>
+
+  <md-card-subtitle>
+    <span>Wo ist das?</span>
+        <span class="app-toolbar-filler"></span>
+
+    <button md-raised-button (click)="RenewLocation()">Neuer Ort auswählen</button>
+
+  </md-card-subtitle>
   <street-view class="street-view-main-map"></street-view>
 </md-card>

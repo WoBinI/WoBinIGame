@@ -11,4 +11,8 @@ export class MapLocationPoint {
     public get lng(): number {
         return this._lng;
     }
+
+    public toString() : String {
+        return `[${this.lat}/${this.lng}]`;
+    }
 }

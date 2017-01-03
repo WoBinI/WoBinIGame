@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs/Observable';
 import { StreetViewService } from './shared/streetView.service';
 
 import { MapsAPILoader } from 'angular2-google-maps/core/services/maps-api-loader/maps-api-loader';
@@ -6,6 +7,7 @@ import { AfterContentInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import { ElementRef } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 var maps_api_loader_1 = require('angular2-google-maps/core/services/maps-api-loader/maps-api-loader');
+import { MapLocationPoint } from './shared/mapLocationPoint';
 
 
 declare var google: any;
@@ -31,21 +33,25 @@ export class StreetViewComponent implements OnInit {
 	}
 
 	public ngOnInit(): void {
+		this.streetViewService.MapLocationPointChangedSource.subscribe(x => this.replaceStreetViewMap(x));
+		this.replaceStreetViewMap(this.streetViewService.CurrentLocation);
+	}
+
+
+	private replaceStreetViewMap(newPosition: MapLocationPoint) {
 		var container = this.myElement.nativeElement.querySelector(StreetViewComponent.MAP_SELECTOR);
 		this._loader.load().then(() => {
-			this.streetViewService.RandomLocation().subscribe(position => {
-				var map = new google.maps.StreetViewPanorama(container, <mapTypes.MapOptions>{
-					position: position,
-					addressControlOptions: {
-						position: google.maps.ControlPosition.BOTTOM_CENTER
-					},
-					linksControl: false,
-					panControl: false,
-					enableCloseButton: false
-				});
-				this._mapResolver(map);
-				return;
+			var map = new google.maps.StreetViewPanorama(container, <mapTypes.MapOptions>{
+				position: newPosition,
+				addressControlOptions: {
+					position: google.maps.ControlPosition.BOTTOM_CENTER
+				},
+				linksControl: false,
+				panControl: false,
+				enableCloseButton: false
 			});
+			this._mapResolver(map);
+			return;
 
 		}).catch((m) => {
 			console.error('Unable to load StreetView');

@@ -12,6 +12,7 @@ import { HttpModule } from "@angular/http";
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { AgmCoreModule } from 'angular2-google-maps/core';
 import { MaterialModule } from '@angular/material';
+
 import 'hammerjs';
 import './rx-addons';
 
