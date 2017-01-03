@@ -1,4 +1,3 @@
-import { MapLocationPoint } from './shared/mapsLocationPoint';
 import { StreetViewService } from './shared/streetView.service';
 
 import { MapsAPILoader } from 'angular2-google-maps/core/services/maps-api-loader/maps-api-loader';
@@ -34,19 +33,20 @@ export class StreetViewComponent implements OnInit {
 	public ngOnInit(): void {
 		var container = this.myElement.nativeElement.querySelector(StreetViewComponent.MAP_SELECTOR);
 		this._loader.load().then(() => {
-			var fenway = new MapLocationPoint(42.345573, -71.098326);
-			 fenway = this.streetViewService.RandomLocation();
-			var map = new google.maps.StreetViewPanorama(container, <mapTypes.MapOptions>{
-				position: fenway,
-				addressControlOptions: {
-					position: google.maps.ControlPosition.BOTTOM_CENTER
-				},
-				linksControl: false,
-				panControl: false,
-				enableCloseButton: false
+			this.streetViewService.RandomLocation().subscribe(position => {
+				var map = new google.maps.StreetViewPanorama(container, <mapTypes.MapOptions>{
+					position: position,
+					addressControlOptions: {
+						position: google.maps.ControlPosition.BOTTOM_CENTER
+					},
+					linksControl: false,
+					panControl: false,
+					enableCloseButton: false
+				});
+				this._mapResolver(map);
+				return;
 			});
-			this._mapResolver(map);
-			return;
+
 		}).catch((m) => {
 			console.error('Unable to load StreetView');
 		});
