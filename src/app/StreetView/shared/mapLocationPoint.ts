@@ -1,5 +1,5 @@
 
-export class MapsLocationPoint {
+export class MapLocationPoint {
     constructor(private _lat: number, private _lng: number) {
 
     }

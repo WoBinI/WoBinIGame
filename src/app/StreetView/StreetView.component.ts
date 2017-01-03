@@ -1,4 +1,4 @@
-import { MapsLocationPoint } from './shared/mapsLocationPoint';
+import { MapLocationPoint } from './shared/mapsLocationPoint';
 import { StreetViewService } from './shared/streetView.service';
 
 import { MapsAPILoader } from 'angular2-google-maps/core/services/maps-api-loader/maps-api-loader';
@@ -25,7 +25,8 @@ export class StreetViewComponent implements OnInit {
 	private _map: Promise<mapTypes.GoogleMap>;
 	private _mapResolver: (value?: mapTypes.GoogleMap) => void;
 
-	constructor(private myElement: ElementRef, private _loader: MapsAPILoader) {
+	constructor(private myElement: ElementRef, private _loader: MapsAPILoader,
+		private streetViewService: StreetViewService) {
 		this._map =
 			new Promise<mapTypes.GoogleMap>((resolve: () => void) => { this._mapResolver = resolve; });
 	}
@@ -33,7 +34,8 @@ export class StreetViewComponent implements OnInit {
 	public ngOnInit(): void {
 		var container = this.myElement.nativeElement.querySelector(StreetViewComponent.MAP_SELECTOR);
 		this._loader.load().then(() => {
-			var fenway = new MapsLocationPoint(42.345573,-71.098326 );
+			var fenway = new MapLocationPoint(42.345573, -71.098326);
+			 fenway = this.streetViewService.RandomLocation();
 			var map = new google.maps.StreetViewPanorama(container, <mapTypes.MapOptions>{
 				position: fenway,
 				addressControlOptions: {
@@ -45,6 +47,8 @@ export class StreetViewComponent implements OnInit {
 			});
 			this._mapResolver(map);
 			return;
+		}).catch((m) => {
+			console.error('Unable to load StreetView');
 		});
 	}
 }

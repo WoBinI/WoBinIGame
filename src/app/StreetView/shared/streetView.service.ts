@@ -1,32 +1,21 @@
-import { MapsLocationPoint } from './mapsLocationPoint';
 
+import { MapLocationPoint } from './mapLocationPoint';
 import { Injectable } from '@angular/core';
+import * as Linq from 'linq-es2015';
 import * as Random from 'random-seed';
+import * as randomSteetview from 'awesome-streetview';
 
 @Injectable()
-export class StreetViewService  {
+export class StreetViewService {
 
     private RandomService = Random.create();
 
-//     constructor() {
-//         var list : List = new List();
-//         // this.locations = new List<MapsLocationPoint>([
-//         //     new MapsLocationPoint(42.345573,-71.098326 ),
-//         //     new MapsLocationPoint(42.345573,-71.098326 ),
-//         //     new MapsLocationPoint(42.345573,-71.098326 ),
-//         //     new MapsLocationPoint(42.345573,-71.098326 )
-//         // ]);
-// let d = new List<string>();
-//     }
+    constructor() {
+    }
 
-    // public RandomLocation(): MapsLocationPoint {
-    //     if(!this.locations.Any){
-    //         return null;
-    //     }
-    //     let randomNumber = this.RandomService.floatBetween(0, this.locations.Count());
-    //     return this.locations.ElementAtOrDefault(randomNumber);
-    // }
-
-    // private locations: List<MapsLocationPoint>;
+    public RandomLocation(): MapLocationPoint {
+         var radomLocation =  randomSteetview();
+         return new MapLocationPoint(radomLocation[0], radomLocation[1]);
+    }
 
 }    
