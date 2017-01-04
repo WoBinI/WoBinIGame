@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/WoBinI/WoBinIGame.svg?branch=master)](https://travis-ci.org/WoBinI/WoBinIGame)
+
 # WoBinI Game
 ### Angular2 based StreetView Game
 > A sample project from students of FH Kufstein
