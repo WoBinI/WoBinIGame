@@ -1,10 +1,17 @@
-<md-card>
+<div [fxLayout]="direction">
 
-  <md-card-subtitle  [fxLayout]="direction">
-    <div fxFlex >Wo ist das?</div>
+  <md-card fxFlex>
+    <md-card-title>
+      <div>Gefällt dir der Ort?</div>
+    </md-card-title>
+    <md-card-content>
+      <street-view fxFlex class="street-view-main-map"></street-view>
+    </md-card-content>
+    <md-card-actions>
+      <button md-raised-button (click)="RenewLocation()">Neuer Ort auswählen</button>
+    </md-card-actions>
+  </md-card>
 
-    <button fxAlign="end" md-raised-button (click)="RenewLocation()">Neuer Ort auswählen</button>
+  <location-chooser fxFlex="30"></location-chooser>
 
-  </md-card-subtitle>
-  <street-view class="street-view-main-map"></street-view>
-</md-card>
+</div>

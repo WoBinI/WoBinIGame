@@ -1,14 +1,13 @@
-import { Observable } from 'rxjs/Observable';
-import { StreetViewService } from './shared/streetView.service';
-
-import { MapsAPILoader } from 'angular2-google-maps/core/services/maps-api-loader/maps-api-loader';
 import * as mapTypes from 'angular2-google-maps/core/services/google-maps-types';
+
+import { Component, OnInit } from '@angular/core';
+
 import { AfterContentInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import { ElementRef } from '@angular/core';
-import { Component, OnInit } from '@angular/core';
-var maps_api_loader_1 = require('angular2-google-maps/core/services/maps-api-loader/maps-api-loader');
 import { MapLocationPoint } from './shared/mapLocationPoint';
-
+import { MapsAPILoader } from 'angular2-google-maps/core/services/maps-api-loader/maps-api-loader';
+import { Observable } from 'rxjs/Observable';
+import { StreetViewService } from './shared/streetView.service';
 
 declare var google: any;
 
