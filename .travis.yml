@@ -1,9 +1,16 @@
 language: node_js
 node_js:
-  - "6"
+  - stable
 
 install:
   - npm install
 
 script:
   - npm run build
+
+after_success: "./deploy.sh"
+ 
+ env:
+  global:
+    - COMMIT_AUTHOR_EMAIL: "mathias@feitzinger.org"
+    - ENCRYPTION_LABEL: "07566d2b55dd"
