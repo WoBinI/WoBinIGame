@@ -8,7 +8,9 @@ install:
 script:
     - npm run build
 
-after_success: "./deploy.sh"
+after_success: 
+    - chmod a+x deploy.sh
+    - ./deploy.sh
  
 env:
     global:
