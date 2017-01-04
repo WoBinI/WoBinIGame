@@ -1,16 +1,16 @@
 language: node_js
 node_js:
-  - stable
+    - stable
 
 install:
-  - npm install
+    - npm install
 
 script:
-  - npm run build
+    - npm run build
 
 after_success: "./deploy.sh"
  
- env:
-  global:
-    - COMMIT_AUTHOR_EMAIL: "mathias@feitzinger.org"
-    - ENCRYPTION_LABEL: "07566d2b55dd"
+env:
+    global:
+        - COMMIT_AUTHOR_EMAIL: "mathias@feitzinger.org"
+        - ENCRYPTION_LABEL: "07566d2b55dd"
