@@ -12,13 +12,14 @@ import { HttpModule } from "@angular/http";
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { AgmCoreModule } from 'angular2-google-maps/core';
 import { MaterialModule } from '@angular/material';
+import {FlexLayoutModule} from "@angular/flex-layout";
 
 import 'hammerjs';
 import './rx-addons';
 
 @NgModule({
   declarations: [AppComponent, StreetViewComponent, HomeComponent],
-  imports: [BrowserModule, FormsModule, HttpModule,
+  imports: [BrowserModule, FormsModule, HttpModule,   FlexLayoutModule.forRoot(),
     RouterModule.forRoot(rootRouterConfig), AgmCoreModule.forRoot({
       apiKey: 'AIzaSyClomCuWY6L5pul5w6xnHrIUbOGBzRbnEU'
     }), MaterialModule.forRoot()
