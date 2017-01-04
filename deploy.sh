@@ -25,8 +25,6 @@ cd ..
 # Clean dist existing contents
 rm -rf dist/**/* || exit 0
 
-# Run our compile script
-doCompile
 
 # Now let's go have some fun with the cloned repo
 cd dist
@@ -56,3 +54,5 @@ ssh-add deploy_key
 
 # Now that we're all set up, we can push.
 git push $SSH_REPO $TARGET_BRANCH
+
+echo "Finished deploy script"
