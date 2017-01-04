@@ -8,6 +8,7 @@ import { AppComponent } from "./app.component";
 import { BrowserModule } from "@angular/platform-browser";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import { FormsModule } from "@angular/forms";
+import { GameResultInfo } from './gameResultInfo/gameResultInfo.component';
 import { HomeComponent } from "./home/home.component";
 import { HttpModule } from "@angular/http";
 import { LocationChooser } from './locationChooser/locationChooser.component';
@@ -19,14 +20,15 @@ import { StreetViewService } from './StreetView/shared/streetView.service';
 import { rootRouterConfig } from "./app.routes";
 
 @NgModule({
-  declarations: [AppComponent, StreetViewComponent, HomeComponent, LocationChooser],
+  declarations: [AppComponent, StreetViewComponent, HomeComponent, LocationChooser, GameResultInfo],
   imports: [BrowserModule, FormsModule, HttpModule,   FlexLayoutModule.forRoot(),
     RouterModule.forRoot(rootRouterConfig), AgmCoreModule.forRoot({
       apiKey: 'AIzaSyClomCuWY6L5pul5w6xnHrIUbOGBzRbnEU'
     }), MaterialModule.forRoot()
   ],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }, StreetViewService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [GameResultInfo]
 })
 export class AppModule {
 

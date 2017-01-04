@@ -1,0 +1,22 @@
+<h1 md-dialog-title>Sie haben {{gameResult.points}} Punkte</h1>
+<div md-dialog-content>
+
+
+
+    <sebm-google-map style="height: 550px;" [zoom]=0>
+<sebm-google-map-marker [latitude]="gameResult.givenLocation.lat" [longitude]="gameResult.givenLocation.lng"></sebm-google-map-marker>
+<sebm-google-map-marker [latitude]="gameResult.selectedLocation.lat" [longitude]="gameResult.selectedLocation.lng"></sebm-google-map-marker>
+
+     <sebm-google-map-polyline>
+         <sebm-google-map-polyline-point [latitude]="gameResult.givenLocation.lat" [longitude]="gameResult.givenLocation.lng">
+         </sebm-google-map-polyline-point>
+         <sebm-google-map-polyline-point [latitude]="gameResult.selectedLocation.lat" [longitude]="gameResult.selectedLocation.lng">
+         </sebm-google-map-polyline-point>
+     </sebm-google-map-polyline>
+
+</sebm-google-map>
+
+</div>
+<div md-dialog-actions>
+    <button md-button (click)="dialogRef.close()">Schließen</button>
+</div>

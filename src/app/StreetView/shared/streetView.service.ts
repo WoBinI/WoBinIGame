@@ -15,27 +15,37 @@ export class StreetViewService {
     constructor() {
         this.RenewLocation();
         this.MapLocationPointChangedSource.subscribe(x => console.log(`Location renewed to ${x}`))
+
     }
 
     private _mapLocationPointChangedSubject: Subject<MapLocationPoint> = new Subject();
-    private _mapLicationPointChangedSource: Observable<MapLocationPoint> = Observable.from(this._mapLocationPointChangedSubject);
+    private _mapLocationPointChangedSource: Observable<MapLocationPoint> = Observable.from(this._mapLocationPointChangedSubject);
+
+    private _gameResultsSubject: Subject<GameResult> = new Subject();
+    private _gameResultsSource: Observable<GameResult> = Observable.from(this._gameResultsSubject);
+
+
     private _currentLocation: MapLocationPoint;
-    private _lastGameResult : GameResult;
+    private _lastGameResult: GameResult;
 
     public get MapLocationPointChangedSource(): Observable<MapLocationPoint> {
-        return this._mapLicationPointChangedSource;
+        return this._mapLocationPointChangedSource;
+    }
+
+    public get GameResultsSource(): Observable<GameResult> {
+        return this._gameResultsSource;
     }
 
     public get CurrentLocation(): MapLocationPoint {
         return this._currentLocation;
     }
 
-    
-    public get lastGameResult() : GameResult {
+
+    public get lastGameResult(): GameResult {
         return this._lastGameResult;
     }
 
-    
+
     public RenewLocation() {
         this.RandomLocation().subscribe(x => {
             this._currentLocation = x;
@@ -43,9 +53,11 @@ export class StreetViewService {
         });
     }
 
-    public CofirmGameWithAcceptedPosition(selectedPostition : MapLocationPoint) : void {
+    public CofirmGameWithAcceptedPosition(selectedPostition: MapLocationPoint): void {
         this._lastGameResult = new GameResult(this._currentLocation, selectedPostition);
         console.debug(`You have ${this.lastGameResult.points} points`);
+        this._gameResultsSubject.next(this._lastGameResult);
+        this.RenewLocation();
     }
 
     private RandomLocation(): Observable<MapLocationPoint> {
