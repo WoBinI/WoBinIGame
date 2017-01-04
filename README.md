@@ -1,6 +1,6 @@
 # WoBinI Game
 ### Angular2 based StreetView Game
-> A sample project from students of FH Kufsstein`
+> A sample project from students of FH Kufstein`
 
 #### Run application
 1. Install [Node.js](https://nodejs.org/en/)
