@@ -6,20 +6,21 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var webpackConfig = {
   entry: {
     'polyfills': './src/polyfills.browser.ts',
-    'vendor':    './src/vendor.browser.ts',
-    'main':       './src/main.browser.ts'
+    'vendor': './src/vendor.browser.ts',
+    'main': './src/main.browser.ts'
   },
 
   output: {
     path: './dist',
+    publicPath: './'
   },
 
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(true),
     new webpack.optimize.CommonsChunkPlugin({ name: ['main', 'vendor', 'polyfills'], minChunks: Infinity }),
-      new HtmlWebpackPlugin({
-        template: './src/index.html'
-      }), // Generates default index.html 
+    new HtmlWebpackPlugin({
+      template: './src/index.html'
+    }), // Generates default index.html 
 
   ],
 
@@ -49,14 +50,14 @@ var defaultConfig = {
   },
 
   resolve: {
-    root: [ path.join(__dirname, 'src') ],
+    root: [path.join(__dirname, 'src')],
     extensions: ['', '.ts', '.js']
   },
 
   devServer: {
     historyApiFallback: true,
     watchOptions: { aggregateTimeout: 300, poll: 1000 },
-    
+
   },
 
   node: {
