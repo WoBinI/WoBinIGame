@@ -20,7 +20,7 @@ SHA=`git rev-parse --verify HEAD`
 git clone $REPO gitCiOuput
 cd gitCiOuput
 git checkout $TARGET_BRANCH || git checkout --orphan $TARGET_BRANCH
-git rm *
+git rm -r * --ignore-unmatch
 cd ..
 
 
