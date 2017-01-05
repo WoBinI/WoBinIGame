@@ -6,7 +6,7 @@
 
 #### Run application
 1. Clone Repository `git clone https://github.com/WoBinI/WoBinIGame.git`
-1. cd WoBinIGame
+1. `cd WoBinIGame`
 1. Install [Node.js](https://nodejs.org/en/)
 1. Run `npm install`
 1. Run `npm start`
