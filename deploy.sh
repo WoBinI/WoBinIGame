@@ -49,7 +49,7 @@ git commit -m "Deploy to GitHub Pages: ${SHA}"
 # ENCRYPTED_IV=${!ENCRYPTED_IV_VAR}
 # openssl aes-256-cbc -K $ENCRYPTED_KEY -iv $ENCRYPTED_IV -in deploy_key.enc -out deploy_key -d
 echo "Start decryption"
-openssl aes-256-cbc -K ${GITHUB_KEY} -iv ${GITHUB_KEY_IV} -pass pass:${GUTHUB_KEY_PASS} -in deploy_key.enc -out deploy_key -d
+openssl aes-256-cbc -K ${GITHUB_KEY} -iv ${GITHUB_KEY_IV} -pass pass:${GUTHUB_KEY_PASS} -in ../deploy_key.enc -out deploy_key -d
 echo "Finished decryption"
 chmod 600 deploy_key
 eval `ssh-agent -s`
