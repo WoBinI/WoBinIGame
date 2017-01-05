@@ -53,7 +53,10 @@ openssl aes-256-cbc -K ${GITHUB_KEY} -iv ${GITHUB_KEY_IV} -in deploy_key.enc -ou
 echo "Finished decryption"
 chmod 600 deploy_key
 eval `ssh-agent -s`
-ssh-add -p ${GUTHUB_KEY_PASS} deploy_key
+echo "Start ssh-add"
+ssh-add deploy_key ${GUTHUB_KEY_PASS} 
+echo "Finished ssh-add"
+
 
 # Now that we're all set up, we can push.
 git push $SSH_REPO $TARGET_BRANCH
