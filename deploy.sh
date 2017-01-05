@@ -15,9 +15,24 @@ REPO=`git config remote.origin.url`
 SSH_REPO=${REPO/https:\/\/github.com\//git@github.com:}
 SHA=`git rev-parse --verify HEAD`
 
+# Clone the existing ci-deployment for this repo into gitCiOuput/
+# Create a new empty branch if ci-deployment doesn't exist yet (should only happen on first deply)
+git clone $REPO gitCiOuput
+cd gitCiOuput
+git checkout $TARGET_BRANCH || git checkout --orphan $TARGET_BRANCH
+git rm *
+cd ..
+
+
+# Save some useful information
+REPO=`git config remote.origin.url`
+SSH_REPO=${REPO/https:\/\/github.com\//git@github.com:}
+SHA=`git rev-parse --verify HEAD`
+
+cp -Rf dist/* gitCiOuput
 
 # Now let's go have some fun with the cloned repo
-cd dist
+cd gitCiOuput
 git config user.name "Travis CI"
 git config user.email "$COMMIT_AUTHOR_EMAIL"
 
@@ -29,7 +44,7 @@ fi
 
 # Commit the "changes", i.e. the new version.
 # The delta will show diffs between new and old versions.
-git add .
+git add -f .
 git commit -m "Deploy to GitHub Pages: ${SHA}"
 
 # Get the deploy key by using Travis's stored variables to decrypt deploy_key.enc
