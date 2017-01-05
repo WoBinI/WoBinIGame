@@ -1,0 +1,15 @@
+language: node_js
+node_js:
+- stable
+install:
+- npm install
+before_script:
+- chmod a+x deploy.sh beforeBuild.sh
+- "./beforeBuild.sh"
+script:
+- npm run build
+after_success:
+- "./deploy.sh"
+env:
+  global:
+  - COMMIT_AUTHOR_EMAIL: "mathias@feitzinger.org"
