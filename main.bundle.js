@@ -16631,7 +16631,7 @@ webpackJsonp([1],[
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
-	 * @license Angular v2.4.1
+	 * @license Angular v2.4.3
 	 * (c) 2010-2016 Google, Inc. https://angular.io/
 	 * License: MIT
 	 */
@@ -17009,7 +17009,8 @@ webpackJsonp([1],[
 	     * @return {?}
 	     */
 	    function isEmptyInputValue(value) {
-	        return value == null || typeof value === 'string' && value.length === 0;
+	        // we don't check for string here so it also works with arrays
+	        return value == null || value.length === 0;
 	    }
 	    /**
 	     * Providers for validators to be used for {@link FormControl}s in a form.
@@ -22282,7 +22283,7 @@ webpackJsonp([1],[
 	    /**
 	     * @stable
 	     */
-	    var /** @type {?} */ VERSION = new _angular_core.Version('2.4.1');
+	    var /** @type {?} */ VERSION = new _angular_core.Version('2.4.3');
 
 	    var /** @type {?} */ SHARED_FORM_DIRECTIVES = [
 	        NgSelectOption,
@@ -29134,9 +29135,6 @@ webpackJsonp([1],[
 	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
-	var __metadata = (this && this.__metadata) || function (k, v) {
-	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-	};
 	var core_1 = __webpack_require__(6);
 	var AppComponent = (function () {
 	    function AppComponent() {
@@ -29149,8 +29147,7 @@ webpackJsonp([1],[
 	        template: __webpack_require__(418),
 	        styles: [__webpack_require__(675)],
 	        encapsulation: core_1.ViewEncapsulation.None
-	    }),
-	    __metadata("design:paramtypes", [])
+	    })
 	], AppComponent);
 	exports.AppComponent = AppComponent;
 	
@@ -29165,9 +29162,6 @@ webpackJsonp([1],[
 	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
 	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
-	};
-	var __metadata = (this && this.__metadata) || function (k, v) {
-	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	__webpack_require__(413);
 	__webpack_require__(247);
@@ -29203,8 +29197,7 @@ webpackJsonp([1],[
 	        providers: [{ provide: common_1.LocationStrategy, useClass: common_1.HashLocationStrategy }, streetView_service_1.StreetViewService],
 	        bootstrap: [app_component_1.AppComponent],
 	        entryComponents: [gameResultInfo_component_1.GameResultInfo]
-	    }),
-	    __metadata("design:paramtypes", [])
+	    })
 	], AppModule);
 	exports.AppModule = AppModule;
 	
@@ -32353,7 +32346,7 @@ webpackJsonp([1],[
 /* 421 */
 /***/ function(module, exports) {
 
-	module.exports = "<md-card>\n    <md-card-title>\n        <div>Gefällt dir der Ort?</div>\n    </md-card-title>\n    <md-card-content>\n        <sebm-google-map style=\"height: 350px;\" [zoom]=0 (mapClick)=\"locationSelected($event)\">\n<sebm-google-map-marker *ngIf=\"selectedPosition\" [latitude]=\"selectedPosition.lat\" [longitude]=\"selectedPosition.lng\">\n</sebm-google-map-marker>\n</sebm-google-map>\n\n</md-card-content>\n<md-card-actions>\n    <button *ngIf=\"selectedPosition\" md-fab (click)=\"confirmSelection()\"><md-icon>check circle</md-icon></button>\n</md-card-actions>\n</md-card>"
+	module.exports = "<md-card>\n    <md-card-title>\n        <div>Wo bin ich?</div>\n    </md-card-title>\n    <md-card-content>\n        <sebm-google-map style=\"height: 350px;\" [zoom]=0 (mapClick)=\"locationSelected($event)\">\n<sebm-google-map-marker *ngIf=\"selectedPosition\" [latitude]=\"selectedPosition.lat\" [longitude]=\"selectedPosition.lng\">\n</sebm-google-map-marker>\n</sebm-google-map>\n\n</md-card-content>\n<md-card-actions>\n    <button *ngIf=\"selectedPosition\" md-fab (click)=\"confirmSelection()\"><md-icon>check circle</md-icon></button>\n</md-card-actions>\n</md-card>\n"
 
 /***/ },
 /* 422 */,
