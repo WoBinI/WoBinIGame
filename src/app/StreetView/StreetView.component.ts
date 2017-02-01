@@ -1,6 +1,6 @@
 import * as mapTypes from 'angular2-google-maps/core/services/google-maps-types';
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 import { AfterContentInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import { ElementRef } from '@angular/core';
@@ -16,7 +16,9 @@ declare var google: any;
 	outputs: ['create'],
 	selector: 'street-view',
 	templateUrl: 'StreetView.component.html',
-	styleUrls: ["StreetView.component.less"]
+	styleUrls: ["StreetView.component.less"],
+	encapsulation: ViewEncapsulation.None
+
 })
 
 export class StreetViewComponent implements OnInit {
